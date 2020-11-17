@@ -30,16 +30,26 @@ document.querySelector("#faster").addEventListener("click", function () {
 	console.log("New speed is" + video.playbackRate)
 });
 
+/* SKIP */
+document.querySelector("#skip").addEventListener("click", function () {
+	video.currentTime += 5;
+	console.log("Current Location" + video.currentTime)
+});
+
 /* MUTE BUTTON */
 document.querySelector("#mute").addEventListener("click", function () {
 	video.muted = true;
 	document.querySelector("#mute").innerHTML = "Unmute"
-	
 });
 
 /* OLD SCHOOL */
 document.querySelector("#old").addEventListener("click", function () {
-	classList.toggle("oldTime")
+	video.classList.add("oldTime");
+});
+
+/* ORIGIONAL */
+document.querySelector("#original").addEventListener("click", function () {
+	video.classList.remove("oldTime");
 });
 
 /* fix this - not all of the way done */
