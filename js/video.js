@@ -21,15 +21,26 @@ document.querySelector("#pause").addEventListener("click", function() {
 /* PLAYBACK SPEED SLOW */
 document.querySelector("#slower").addEventListener("click", function () {
 	video.playbackRate *= 0.90
-	console.log(video.playbackRate)
+	console.log("New speed is" + video.playbackRate)
 });
 
 /* PLAYBACK SPEED FAST */
 document.querySelector("#faster").addEventListener("click", function () {
 	video.playbackRate *= (1/0.9)
-	console.log(video.playbackRate)
+	console.log("New speed is" + video.playbackRate)
 });
 
+/* MUTE BUTTON */
+document.querySelector("#mute").addEventListener("click", function () {
+	video.muted = true;
+	document.querySelector("#mute").innerHTML = "Unmute"
+	
+});
+
+/* OLD SCHOOL */
+document.querySelector("#old").addEventListener("click", function () {
+	classList.toggle("oldTime")
+});
 
 /* fix this - not all of the way done */
 // document.querySelector("#volumeSlider").addEventListener(...)
