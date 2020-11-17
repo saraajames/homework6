@@ -26,7 +26,7 @@ document.querySelector("#slower").addEventListener("click", function () {
 
 /* PLAYBACK SPEED FAST */
 document.querySelector("#faster").addEventListener("click", function () {
-	video.playbackRate *= (1/0.9)
+	video.playbackRate *= 1.10
 	console.log("New speed is" + video.playbackRate)
 });
 
@@ -36,15 +36,49 @@ document.querySelector("#skip").addEventListener("click", function () {
 	console.log("Current Location" + video.currentTime)
 });
 
+/* SKIP BY 5 RESTRART */
+document.querySelector("#skip").addEventListener("click", function () {
+	video.currentTime += 5;
+	if (video.ended){
+		video.load();
+		video.play();
+	}
+	console.log("Current Location" + video.currentTime)
+});
+
 /* MUTE BUTTON */
 document.querySelector("#mute").addEventListener("click", function () {
-	video.muted = true;
-	document.querySelector("#mute").innerHTML = "Unmute"
+	if (video.muted) {
+		video.muted = false;
+		let sound = document.getElementById("mute").innerHTML = "Mute"
+		console.log("Unmuted")
+	}
+	else{
+		video.muted = true;
+		let sound = document.getElementById("mute").innerHTML = "Unmuted"
+		console.log("Muted");
+	}
 });
+
+document.querySelector("#volumeSlider").oninput = function() {
+	sliderChange()
+	setVolume()
+};
+
+function sliderChange(val){
+	var val = document.querySelector("#volumeSlider").value;
+	document.querySelector("#volume").innerHTML = val + "%"
+}
+
+function setVolume(){
+	video.volume = document.querySelector("#volumeSlider").value / 100;
+}
+
 
 /* OLD SCHOOL */
 document.querySelector("#old").addEventListener("click", function () {
 	video.classList.add("oldTime");
+	console.log("Grayscale")
 });
 
 /* ORIGIONAL */
@@ -52,7 +86,5 @@ document.querySelector("#original").addEventListener("click", function () {
 	video.classList.remove("oldTime");
 });
 
-/* fix this - not all of the way done */
-// document.querySelector("#volumeSlider").addEventListener(...)
-// 	console.log(this)
-// 	console.log(this.value)
+
+
