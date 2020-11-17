@@ -32,19 +32,28 @@ document.querySelector("#faster").addEventListener("click", function () {
 
 /* SKIP */
 document.querySelector("#skip").addEventListener("click", function () {
-	video.currentTime += 5;
-	console.log("Current Location" + video.currentTime)
+	if (video.currentTime < video.duration-5){
+		video.currentTime += 5;
+	}
+	else{
+		video.currentTime = 0;
+		console.log("Start beginning of video")
+
+	}
+	console.log("Current Location" + video.currentTime);
+	console.log(video.duration);
+	video.play();
 });
 
 /* SKIP BY 5 RESTRART */
-document.querySelector("#skip").addEventListener("click", function () {
-	video.currentTime += 5;
-	if (video.ended){
-		video.load();
-		video.play();
-	}
-	console.log("Current Location" + video.currentTime)
-});
+// document.querySelector("#skip").addEventListener("click", function () {
+// 	video.currentTime += 5;
+// 	if (video.ended){
+// 		video.load();
+// 		video.play();
+// 	}
+// 	console.log("Current Location" + video.currentTime)
+// });
 
 /* MUTE BUTTON */
 document.querySelector("#mute").addEventListener("click", function () {
